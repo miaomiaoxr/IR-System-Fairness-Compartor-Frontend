@@ -2,7 +2,7 @@ import Query from "./Query";
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 
-const Model = ({model,querys}) => {
+const Model = ({model,querys,...props}) => {
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,
@@ -14,7 +14,7 @@ const Model = ({model,querys}) => {
     return (
         <Item>
             <h3>Model: {model}</h3>
-            {querys.map(query => <Query key={query.qid} query={query} />)}
+            {querys.map(query => <Query key={query.qid} query={query} {...props}/>)}
         </Item>
     );
 }
