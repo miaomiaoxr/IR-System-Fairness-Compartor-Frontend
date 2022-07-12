@@ -6,10 +6,20 @@ const getAll = () => axios.get(url)
 
 const create = newObject => axios.post(url,newObject)
 
-const update = (newObject) => axios.put(url,newObject)
+const postForm = (file) => {
+    const formData = new FormData();
+    formData.append("model_file", file);
+    axios.post(url, formData,{
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+}
 
-const remove = id => axios.delete(`${url}/${id}`)
+// const update = (newObject) => axios.put(url,newObject)
 
-const NetWork = {getAll,create,update,remove}
+// const remove = id => axios.delete(`${url}/${id}`)
+
+const NetWork = {getAll,create,postForm}
 
 export default NetWork
