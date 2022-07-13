@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Backdrop, Button,Typography } from '@mui/material'
+import { Modal, Button, Card } from '@mui/material'
 import { VerticalBarChart } from './VerticalBarChart';
 
 export const BackDropButton = () => {
@@ -7,17 +7,29 @@ export const BackDropButton = () => {
     const handleToggle = () => { setOpen(!open) }
     const handleClose = () => { setOpen(false) }
 
+    const modalStyle = {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    };
+
+    const cardStyle = {
+        m: 'auto',
+        width: '80%'
+    };
+
     return (
         <>
             <Button onClick={handleToggle}>Show backdrop</Button>
-            <Backdrop
-                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            <Modal
+                sx={modalStyle}
                 open={open}
-                onClick={handleClose}
+                onClose={handleClose}
             >
-                <Typography variant="h6">Backdrop</Typography>
-                <VerticalBarChart />
-            </Backdrop>
+                <Card sx={cardStyle}>
+                    <VerticalBarChart />
+                </Card>
+            </Modal>
         </>
     )
 }
