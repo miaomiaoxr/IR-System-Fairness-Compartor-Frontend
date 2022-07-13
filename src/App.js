@@ -3,6 +3,7 @@ import NetWork from './services/Network';
 import ModelList from './components/Contents/ModelList';
 import CSVForm from './components/FileUpLoads/CSVForm';
 import { BackDropButton } from './components/BackDrop/BackDropButton';
+import JSONForm from './components/FileUpLoads/JSONForm';
 
 function App() {
   const [data, setData] = useState([]);
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
       <h1>AS Comparer</h1>
       <CSVForm setData={setData}/>
+      <JSONForm />
       <BackDropButton />
       <ModelList data={data} />
     </div>

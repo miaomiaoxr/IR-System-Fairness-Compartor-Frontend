@@ -1,11 +1,10 @@
 import { useRef } from 'react';
-import Network from '../../services/Network';
 import { Button } from "@mui/material";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 
-const postForm = Network.postForm;
 
-const FileForm = ({afterUpload,mime,textContent,accept}) => {
+
+const FileForm = ({afterUpload,mime,textContent,accept,postForm}) => {
     const fileInputRef = useRef();
 
     const handleFileUpload =async (e) => {
