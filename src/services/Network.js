@@ -9,7 +9,7 @@ const create = newObject => axios.post(url,newObject)
 const postForm = (file) => {
     const formData = new FormData();
     formData.append("model_file", file);
-    axios.post(url, formData,{
+    return axios.post(url, formData,{
         headers: {
             'Content-Type': 'multipart/form-data'
         }

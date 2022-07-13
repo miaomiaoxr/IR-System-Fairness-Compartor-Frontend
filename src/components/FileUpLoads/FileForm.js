@@ -5,19 +5,10 @@ import UploadFileIcon from "@mui/icons-material/UploadFile";
 
 const postForm = Network.postForm;
 
-const FileForm = () => {
-    // const [modelName, setModelName] = useState('');
-    // const modelNameRef = useRef('');
-    // const [file, setFile] = useState();
+const FileForm = ({afterUpload,mime,textContent,accept}) => {
     const fileInputRef = useRef();
 
-
-
-    // const fileChangeHandler = (e) => {
-    //     setFile(e.target.files[0]);
-    // }
-
-    const handleFileUpload = (e) => {
+    const handleFileUpload =async (e) => {
         e.preventDefault();
         // const name = modelNameRef.current.value.trim();
         const file = fileInputRef.current.files[0];
@@ -32,15 +23,15 @@ const FileForm = () => {
             return;
         }
 
-        if(file.type !== 'text/csv') {
-            console.log('File type is not csv');
+        if(mime && file.type !== mime) {
+            console.log(`File type is not ${mime}`);
             return;
         }
 
         // postForm({name:name, file:file})
-        postForm(file)
+        postForm(file).then(res => afterUpload && afterUpload(res.data));
 
-        console.log(' file:', file.name);
+        
         // e.target.reset();
         // modelNameRef.current.value = '';//DON"T manipulate the DOM
         // fileInputRef.current.files = null;
@@ -70,10 +61,9 @@ const FileForm = () => {
                 component="label"
                 variant="outlined"
                 startIcon={<UploadFileIcon />}
-                // sx={{ marginRight: "1rem" }}
             >
-                Upload CSV
-                <input type="file" accept=".csv" ref={fileInputRef} hidden onChange={handleFileUpload} />
+                {textContent}
+                <input type="file" accept={accept} ref={fileInputRef} hidden onChange={handleFileUpload} />
             </Button>
         </>);
 }

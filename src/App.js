@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import NetWork from './services/Network';
 import ModelList from './components/Contents/ModelList';
-import FileForm from './components/FileUpLoads/FileForm';
+import CSVForm from './components/FileUpLoads/CSVForm';
 import { BackDropButton } from './components/BackDrop/BackDropButton';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <h1>AS Comparer</h1>
-      <FileForm />
+      <CSVForm setData={setData}/>
       <BackDropButton />
       <ModelList data={data} />
     </div>
