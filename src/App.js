@@ -5,6 +5,7 @@ import ASAppBar from './components/AppBar/ASAppBar';
 
 function App() {
   const [data, setData] = useState([]);
+  const [exposure, setExposure] = useState("none");
 
   useEffect(() => {//initialize the data
     NetWork.getAll().then(res => setData(res.data));
@@ -12,8 +13,8 @@ function App() {
 
   return (
     <div className="App">
-      <ASAppBar setData={setData}/>
-      <ModelList data={data} />
+      <ASAppBar setData={setData} exposure={exposure} setExposure={setExposure}/>
+      <ModelList data={data} exposure={exposure}/>
     </div>
   );
 }
