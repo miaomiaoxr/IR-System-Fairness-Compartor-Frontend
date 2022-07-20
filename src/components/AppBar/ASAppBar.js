@@ -7,7 +7,7 @@ import JSONForm from '../FileUpLoads/JSONForm';
 const ASAppBar = ({setData}) => {
     return (
         <Box sx={{ flexGrow: 1}}>
-            <AppBar position="sticky">
+            <AppBar position="fixed">
                 <Toolbar>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         AS Comparer
@@ -17,6 +17,7 @@ const ASAppBar = ({setData}) => {
                     <BackDropButton />
                 </Toolbar>
             </AppBar>
+            <Toolbar /> 
         </Box>
     );
 }
