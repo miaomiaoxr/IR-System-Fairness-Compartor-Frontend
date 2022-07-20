@@ -1,13 +1,12 @@
 import { useRef } from 'react';
 import { Button } from "@mui/material";
-import UploadFileIcon from "@mui/icons-material/UploadFile";
 
 
 
-const FileForm = ({afterUpload,mime,textContent,accept,postForm}) => {
+const FileForm = ({ afterUpload, mime, textContent, accept, postForm }) => {
     const fileInputRef = useRef();
 
-    const handleFileUpload =async (e) => {
+    const handleFileUpload = async (e) => {
         e.preventDefault();
         // const name = modelNameRef.current.value.trim();
         const file = fileInputRef.current.files[0];
@@ -17,12 +16,12 @@ const FileForm = ({afterUpload,mime,textContent,accept,postForm}) => {
             return;
         }
 
-        if(file.size > 10000000) {
+        if (file.size > 10000000) {
             console.log('File size is too big');
             return;
         }
 
-        if(mime && file.type !== mime) {
+        if (mime && file.type !== mime) {
             console.log(`File type is not ${mime}`);
             return;
         }
@@ -30,7 +29,7 @@ const FileForm = ({afterUpload,mime,textContent,accept,postForm}) => {
         // postForm({name:name, file:file})
         postForm(file).then(res => afterUpload && afterUpload(res.data));
 
-        
+
         // e.target.reset();
         // modelNameRef.current.value = '';//DON"T manipulate the DOM
         // fileInputRef.current.files = null;
@@ -57,9 +56,10 @@ const FileForm = ({afterUpload,mime,textContent,accept,postForm}) => {
     return (
         <>
             <Button
+                color="inherit"
                 component="label"
-                variant="outlined"
-                startIcon={<UploadFileIcon />}
+            // variant="outlined"
+            // startIcon={<UploadFileIcon />}
             >
                 {textContent}
                 <input type="file" accept={accept} ref={fileInputRef} hidden onChange={handleFileUpload} />

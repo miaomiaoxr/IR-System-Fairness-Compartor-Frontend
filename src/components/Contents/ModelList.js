@@ -2,6 +2,7 @@ import Model from "./Model";
 import Stack from "@mui/material/Stack";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import {Box} from '@mui/material'; 
 import { useState } from "react";
 
 
@@ -55,7 +56,7 @@ const ModelList = ({ data }) => {
     }
 
     return (
-        <div>
+        <Box sx={{mt:2}}>
             <h2>Model List</h2>
             <ToggleButtonGroup
                 color="primary"
@@ -71,7 +72,7 @@ const ModelList = ({ data }) => {
             <Stack sx={{ maxHeight: "100%", width: "100%" }} direction="row" spacing={1}>
                 {data.map(model => <Model key={model.model} model={model.model} querys={model.querys} {...passedProps}/>)}
             </Stack>
-        </div>
+        </Box>
     )
 }
 

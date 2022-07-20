@@ -28,7 +28,7 @@ export const VerticalBarChart = () => {
             },
             title: {
                 display: true,
-                text: 'Chart.js Bar Chart',
+                text: 'Statistics',
             },
         },
     };

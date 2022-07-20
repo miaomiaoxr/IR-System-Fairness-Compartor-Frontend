@@ -20,7 +20,7 @@ export const BackDropButton = () => {
 
     return (
         <>
-            <Button onClick={handleToggle}>Show backdrop</Button>
+            <Button color="inherit" onClick={handleToggle}>Chart</Button>
             <Modal
                 sx={modalStyle}
                 open={open}
