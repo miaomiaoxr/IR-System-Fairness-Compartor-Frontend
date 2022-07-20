@@ -1,6 +1,7 @@
 import Query from "./Query";
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import DeleteButton from "../Delete/DeleteButton";
 
 const Model = ({model,querys,...props}) => {
     const Item = styled(Paper)(({ theme }) => ({
@@ -14,6 +15,7 @@ const Model = ({model,querys,...props}) => {
     return (
         <Item>
             <h3>Model: {model}</h3>
+            <DeleteButton modelName={model}/>
             {querys.map(query => <Query key={query.qid} query={query} {...props}/>)}
         </Item>
     );
