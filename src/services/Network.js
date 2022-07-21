@@ -29,8 +29,8 @@ const postJSONForm = (file) => {
 
 // const update = (newObject) => axios.put(url,newObject)
 
-// const remove = id => axios.delete(`${url}/${id}`)
+const remove = id => axios.delete(`${url}/${id}`)
 
-const NetWork = {getAll,create, postCSVForm,postJSONForm}
+const NetWork = {getAll,create, postCSVForm,postJSONForm, remove}
 
 export default NetWork

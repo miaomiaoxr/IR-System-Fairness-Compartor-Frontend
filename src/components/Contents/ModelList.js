@@ -2,7 +2,7 @@ import Stack from "@mui/material/Stack";
 import Model from "./Model";
 
 
-const ModelList = ({ data,exposure }) => {
+const ModelList = ({ data,exposure,setData}) => {
 
     const propertyToColor = {
         first_color: '#f06767',
@@ -43,6 +43,7 @@ const ModelList = ({ data,exposure }) => {
         propertyToColor,
         genderToProperty,
         GeoToProperty,
+        setData,
     }
 
     

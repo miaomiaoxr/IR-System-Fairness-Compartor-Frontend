@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import DeleteButton from "../Delete/DeleteButton";
 
-const Model = ({model,querys,...props}) => {
+const Model = ({model,querys,setData,...props}) => {
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,
@@ -15,7 +15,7 @@ const Model = ({model,querys,...props}) => {
     return (
         <Item>
             <h3>Model: {model}</h3>
-            <DeleteButton modelName={model}/>
+            <DeleteButton modelName={model} setData={setData}/>
             {querys.map(query => <Query key={query.qid} query={query} {...props}/>)}
         </Item>
     );
