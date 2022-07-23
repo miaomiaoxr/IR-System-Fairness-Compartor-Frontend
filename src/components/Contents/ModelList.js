@@ -52,7 +52,7 @@ const ModelList = ({ data,exposure,setData}) => {
         <>
             <h2>Model List</h2>
             <Stack sx={{ maxHeight: "100%", width: "100%" }} direction="row" spacing={1}>
-                {data.map(model => <Model key={model.model} model={model.model} querys={model.querys} {...passedProps} />)}
+                {data.map(model => <Model key={model.id} modelName={model.modelName} querys={model.querys} {...passedProps} />)}
             </Stack>
         </>
     )
