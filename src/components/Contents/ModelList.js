@@ -3,7 +3,7 @@ import Model from "./Model";
 
 
 
-const ModelList = ({ data, exposure, setData }) => {
+const ModelList = ({ data,  ...props }) => {
 
     const propertyToColor = {
         first_color: '#f06767',
@@ -40,11 +40,10 @@ const ModelList = ({ data, exposure, setData }) => {
     const genderToProperty = new Proxy(pre_genderToProperty, proxyhandler)
 
     const passedProps = {
-        exposure,
         propertyToColor,
         genderToProperty,
         GeoToProperty,
-        setData,
+        ...props//exposure, setData, renameModel
     }
 
 

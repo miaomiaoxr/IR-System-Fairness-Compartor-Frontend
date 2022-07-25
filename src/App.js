@@ -11,10 +11,15 @@ function App() {
     NetWork.getAll().then(res => setData(res.data));
   }, []);
 
+  const renameModel = (modelID, newName) => {
+    NetWork.putNewModelName(modelID, newName)
+      .then(() => setData(pre => pre.map(model => model.id === modelID ? { ...model, modelName: newName } : model)));
+  }
+
   return (
     <div className="App">
-      <ASAppBar setData={setData} exposure={exposure} setExposure={setExposure}/>
-      <ModelList data={data} exposure={exposure} setData={setData}/>
+      <ASAppBar setData={setData} exposure={exposure} setExposure={setExposure} />
+      <ModelList data={data} exposure={exposure} setData={setData} renameModel={renameModel}/>
     </div>
   );
 }

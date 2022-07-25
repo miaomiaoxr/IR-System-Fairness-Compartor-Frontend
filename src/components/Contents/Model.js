@@ -5,10 +5,9 @@ import DeleteButton from "../Delete/DeleteButton";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { TextField } from "@mui/material";
 import { useState } from 'react';
-import NetWork from "../../services/Network";
 
-const Model = ({ modelID, modelName, querys, setData, ...props }) => {
-    const { putNewModelName } = NetWork;
+const Model = ({ modelID, modelName, querys, setData, renameModel, ...props }) => {
+
 
     const [name, setName] = useState(modelName);
     const [isNameFocused, setIsNamedFocused] = useState(false);
@@ -37,7 +36,7 @@ const Model = ({ modelID, modelName, querys, setData, ...props }) => {
                     variant="standard"
                     value={name}
                     onChange={event => setName(event.target.value)}
-                    onBlur={event => { setIsNamedFocused(false); putNewModelName(modelID, name) }}
+                    onBlur={event => { setIsNamedFocused(false); renameModel(modelID, name) }}
                     sx={{ m: 1 }}
                 />
             )}
