@@ -27,12 +27,12 @@ const postJSONForm = (file) => {
     })
 }
 
-const postNewModelName = (id, newName) => axios.put(`${url}/${id}`, { newName: newName })
+const putNewModelName = (id, newName) => axios.put(`${url}/${id}`, { newName: newName })
 
 // const update = (newObject) => axios.put(url,newObject)
 
 const remove = id => axios.delete(`${url}/${id}`)
 
-const NetWork = { getAll, create, postCSVForm, postJSONForm, postNewModelName, remove }
+const NetWork = { getAll, create, postCSVForm, postJSONForm, putNewModelName, remove }
 
 export default NetWork

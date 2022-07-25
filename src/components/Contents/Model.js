@@ -8,7 +8,7 @@ import { useState } from 'react';
 import NetWork from "../../services/Network";
 
 const Model = ({ modelID, modelName, querys, setData, ...props }) => {
-    const { postNewModelName } = NetWork;
+    const { putNewModelName } = NetWork;
 
     const [name, setName] = useState(modelName);
     const [isNameFocused, setIsNamedFocused] = useState(false);
@@ -37,8 +37,8 @@ const Model = ({ modelID, modelName, querys, setData, ...props }) => {
                     variant="standard"
                     value={name}
                     onChange={event => setName(event.target.value)}
-                    onBlur={event => {setIsNamedFocused(false) ; postNewModelName(modelID, name)}}
-                    sx={{m:1}}
+                    onBlur={event => { setIsNamedFocused(false); putNewModelName(modelID, name) }}
+                    sx={{ m: 1 }}
                 />
             )}
 
