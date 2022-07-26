@@ -20,8 +20,6 @@ const Model = ({ modelID, modelName, querys, setData, renameModel, ...props }) =
         color: theme.palette.text.secondary,
     }));
 
-
-
     return (
         <Item>
             {!isNameFocused ? (

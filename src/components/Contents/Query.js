@@ -1,17 +1,20 @@
 import { Box } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import clsx from 'clsx';
+import GeoAndGender from '../PropertyToColor/GeoAndGender.js'
+import { memo } from "react";
 
 const Query = (
     {
         query,
         exposure,
-        propertyToColor,
-        GeoToProperty,
-        genderToProperty,
     }
 ) => {
     const ID_query = query.data.map(entry => { return { ...entry, id: entry.docid } });
+
+    const {propertyToColor,GeoToProperty,genderToProperty} = GeoAndGender;
+
+
     const columns = [
         {
             field: "id",
@@ -105,4 +108,4 @@ const Query = (
     )
 }
 
-export default Query;
+export default memo(Query);
