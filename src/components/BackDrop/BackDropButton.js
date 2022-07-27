@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Modal, Button, Card } from '@mui/material'
-import { VerticalBarChart } from './VerticalBarChart';
 
-export const BackDropButton = () => {
+export const BackDropButton = (props) => {
     const [open, setOpen] = useState(false);
     const handleToggle = () => { setOpen(!open) }
     const handleClose = () => { setOpen(false) }
@@ -20,14 +19,14 @@ export const BackDropButton = () => {
 
     return (
         <>
-            <Button color="inherit" onClick={handleToggle}>Chart</Button>
+            <Button color="inherit" onClick={handleToggle}>{props.name}</Button>
             <Modal
                 sx={modalStyle}
                 open={open}
                 onClose={handleClose}
             >
                 <Card sx={cardStyle}>
-                    <VerticalBarChart />
+                    {props.children}
                 </Card>
             </Modal>
         </>
