@@ -16,10 +16,16 @@ function App() {
       .then(() => setData(pre => pre.map(model => model.id === modelID ? { ...model, modelName: newName } : model)));
   }
 
+  const modelsWithQid = data.map(model => ({
+    modelName: model.modelName,
+    id: model.id,
+    qids: model.querys.map(query => query.qid)
+  }));
+
   return (
     <div className="App">
-      <ASAppBar setData={setData} exposure={exposure} setExposure={setExposure} />
-      <ModelList data={data} exposure={exposure} setData={setData} renameModel={renameModel}/>
+      <ASAppBar setData={setData} exposure={exposure} setExposure={setExposure} modelsWithQid={modelsWithQid} />
+      <ModelList data={data} exposure={exposure} setData={setData} renameModel={renameModel} />
     </div>
   );
 }

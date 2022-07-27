@@ -4,10 +4,10 @@ import CSVForm from '../FileUpLoads/CSVForm';
 import JSONForm from '../FileUpLoads/JSONForm';
 import HightLightSelect from '../GroupSelect/HightLightSelect';
 import {VerticalBarChart} from '../BackDrop/VerticalBarChart';
-import DisplayControlModelAndQid from '../BackDrop/DisplayControlModelAndQid';
+import DisplayControlModelAndQid from '../BackDrop/DisplayControl/DisplayControlModelAndQid';
 
 
-const ASAppBar = ({setData, exposure, setExposure}) => {
+const ASAppBar = ({setData, exposure, setExposure,modelsWithQid}) => {
     return (
         <Box sx={{ flexGrow: 1}}>
             <AppBar position="fixed">
@@ -22,7 +22,7 @@ const ASAppBar = ({setData, exposure, setExposure}) => {
                         <VerticalBarChart />
                     </BackDropButton>
                     <BackDropButton name='Display'>
-                        <DisplayControlModelAndQid />
+                        <DisplayControlModelAndQid modelsWithQid={modelsWithQid}/>
                     </BackDropButton>
                 </Toolbar>
             </AppBar>
