@@ -7,7 +7,7 @@ import {VerticalBarChart} from '../BackDrop/VerticalBarChart';
 import DisplayControlModelAndQid from '../BackDrop/DisplayControl/DisplayControlModelAndQid';
 
 
-const ASAppBar = ({setData, exposure, setExposure,modelsWithQid}) => {
+const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
     return (
         <Box sx={{ flexGrow: 1}}>
             <AppBar position="fixed">
@@ -22,7 +22,7 @@ const ASAppBar = ({setData, exposure, setExposure,modelsWithQid}) => {
                         <VerticalBarChart />
                     </BackDropButton>
                     <BackDropButton name='Display'>
-                        <DisplayControlModelAndQid modelsWithQid={modelsWithQid}/>
+                        <DisplayControlModelAndQid data={data} setData={setData} modelsWithQid={modelsWithQid}/>
                     </BackDropButton>
                 </Toolbar>
             </AppBar>

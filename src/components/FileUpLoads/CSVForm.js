@@ -5,6 +5,9 @@ const CSVForm = ({ setData }) => {
 
     const postForm = Network.postCSVForm;
     const afterUploadHandler = (data) => {
+        console.log(data);
+        data.showModel = true;
+        data.querys.map(query => query.showQuery = true);
         setData(pre => [...pre, data]);
     }
 

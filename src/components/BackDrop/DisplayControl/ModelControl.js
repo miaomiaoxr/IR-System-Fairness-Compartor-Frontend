@@ -4,8 +4,13 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import QidControl from './QidControl';
 
-const ModelControl = ({ modelWithQid }) => {
-    const [checked, setChecked] = useState(Array.from({ length: modelWithQid.qids.length }, () => true));
+const ModelControl = ({ modelWithQid, showModel, querys, modelID, setData }) => {
+    const [checked, setChecked] = useState(Array.from({ length: modelWithQid.qids.length }, (e, i) => {
+        if (!showModel) return false;
+        else {
+            return querys.find(q => q.qid === modelWithQid.qids[i]).showQuery;
+        }
+    }));
 
     const handleChangeModel = (event) => {
         setChecked(Array.from({ length: modelWithQid.qids.length }, () => event.target.checked));
@@ -13,8 +18,8 @@ const ModelControl = ({ modelWithQid }) => {
 
     const HandleChangeQid = (index) => {
         return (event) => {
-            console.log('index',index,'event',event.target.checked);
-            setChecked(pre =>[...pre.slice(0,index),event.target.checked,...pre.slice(index+1)]);
+            console.log('index', index, 'event', event.target.checked);
+            setChecked(pre => [...pre.slice(0, index), event.target.checked, ...pre.slice(index + 1)]);
         }
     }
 

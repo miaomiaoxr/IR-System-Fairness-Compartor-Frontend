@@ -8,7 +8,11 @@ function App() {
   const [exposure, setExposure] = useState("none");
 
   useEffect(() => {//initialize the data
-    NetWork.getAll().then(res => setData(res.data));
+    NetWork.getAll().then(res => setData(res.data.map(model => ({
+      showModel: true,
+      querys: model.querys.map(query => query.showQuery=true),
+      ...model,
+    }))));
   }, []);
 
   const renameModel = (modelID, newName) => {
@@ -24,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <ASAppBar setData={setData} exposure={exposure} setExposure={setExposure} modelsWithQid={modelsWithQid} />
+      <ASAppBar data={data} setData={setData} exposure={exposure} setExposure={setExposure} modelsWithQid={modelsWithQid} />
       <ModelList data={data} exposure={exposure} setData={setData} renameModel={renameModel} />
     </div>
   );
