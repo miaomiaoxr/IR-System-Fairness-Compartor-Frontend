@@ -9,6 +9,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { Stack, Typography, Paper } from '@mui/material';
 
 ChartJS.register(
     CategoryScale,
@@ -51,6 +52,30 @@ export const VerticalBarChart = () => {
     }
 
     return (
-        <Bar options={options} data={data} />
+
+        <Stack direction="row" spacing={2}>
+            <Stack>
+                <Bar options={options} data={data} />
+                <Typography variant="h6">Statistics</Typography>
+                <Typography variant="h6">Statistics</Typography>
+                <Typography variant="h6">Statistics</Typography>
+                <Typography variant="h6">Statistics</Typography>
+                <Typography variant="h6">Statistics</Typography>
+                <Typography variant="h6">Statistics</Typography>
+            </Stack>
+            <Stack>
+                <Bar options={options} data={data} />
+                <Typography variant="h6">Statistics</Typography>
+            </Stack>
+            <Stack>
+                <Bar options={options} data={data} />
+                <Typography variant="h6">Statistics</Typography>
+            </Stack>
+            <Stack>
+                <Bar options={options} data={data} />
+                <Typography variant="h6">Statistics</Typography>
+            </Stack>
+        </Stack>
+
     )
 }
