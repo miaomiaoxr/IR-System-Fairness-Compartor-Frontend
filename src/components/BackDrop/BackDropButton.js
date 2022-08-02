@@ -14,7 +14,10 @@ export const BackDropButton = (props) => {
 
     const cardStyle = {
         m: 'auto',
-        width: '80%'
+        width: '80%',
+        maxHeight: '80%',
+        overflow: "scroll",
+        overflowY: "scroll",
     };
 
     return (
