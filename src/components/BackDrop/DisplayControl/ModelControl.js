@@ -12,20 +12,54 @@ const ModelControl = ({ modelWithQid, showModel, querys, modelID, setData }) => 
         }
     }));
 
+    const allSetmodelAndQuerys = (data, bool) => {
+        return data.map(m => {
+            if (m.id === modelID) {
+                m.showModel = bool;
+                m.querys = m.querys.map(q => {
+                    q.showQuery = bool;
+                    return q;
+                }
+                )
+            }
+            return m;
+        })
+    }
+
+    const setOneQuery = (data, qid, bool, modelID) => {
+        return data.map(m => {
+            if (m.id === modelID) {
+                m.querys = m.querys.map(q => {
+                    if (q.qid === qid)
+                        q.showQuery = bool;
+                    return q;
+                }
+                )
+            }
+            return m;
+        })
+    }
+
+
+
     const handleChangeModel = (event) => {
         setChecked(Array.from({ length: modelWithQid.qids.length }, () => event.target.checked));
+
+        setData(data => allSetmodelAndQuerys([...data], event.target.checked));
+
     };
 
-    const HandleChangeQid = (index) => {
+    const HandleChangeQid = (index, modelID) => {
         return (event) => {
-            console.log('index', index, 'event', event.target.checked);
             setChecked(pre => [...pre.slice(0, index), event.target.checked, ...pre.slice(index + 1)]);
+            const qid = modelWithQid.qids[index];
+            setData(data => setOneQuery(data, qid, event.target.checked, modelID));
         }
     }
 
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
-            {modelWithQid.qids.map((qid, index) => <QidControl key={qid} qid={qid} checked={checked[index]} handleChangeQid={HandleChangeQid(index)} />)}
+            {modelWithQid.qids.map((qid, index) => <QidControl key={qid} qid={qid} checked={checked[index]} handleChangeQid={HandleChangeQid(index, modelID)} />)}
         </Box>
     );
 
