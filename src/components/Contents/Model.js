@@ -18,7 +18,7 @@ const Model = ({ modelID, modelName, querys, setData, renameModel, ...props }) =
         <Item>
             <ModelName modelName={modelName} modelID={modelID} renameModel={renameModel} />
             <DeleteButton modelID={modelID} setData={setData} />
-            {querys.map(query => <Query key={query.qid} query={query} {...props} />)}
+            {querys.map(query => query.showQuery && <Query key={query.qid} query={query} {...props} />)}
         </Item>
     );
 }

@@ -9,6 +9,7 @@ const ModelList = ({ data, ...props }) => {
             <h2>Model List</h2>
             <Stack sx={{ maxHeight: "100%", width: "100%" }} direction="row" spacing={1}>
                 {data.map(model =>
+                    model.showModel &&
                     <Model
                         key={model.id}
                         modelID={model.id}

@@ -27,7 +27,7 @@ const ModelControl = ({ modelWithQid, showModel, querys, modelID, setData }) => 
     }
 
     const setOneQuery = (data, qid, bool, modelID) => {
-        return data.map(m => {
+        data.map(m => {
             if (m.id === modelID) {
                 m.querys = m.querys.map(q => {
                     if (q.qid === qid)
@@ -38,6 +38,17 @@ const ModelControl = ({ modelWithQid, showModel, querys, modelID, setData }) => 
             }
             return m;
         })
+
+        const queryChecks = data.find(m => m.id === modelID).querys.map(q => q.showQuery);
+
+        if(queryChecks.every(q => q === false)){
+            data.find(m => m.id === modelID).showModel = false;
+        }
+        else{
+            data.find(m => m.id === modelID).showModel = true;
+        }
+
+        return data;
     }
 
 
@@ -53,7 +64,7 @@ const ModelControl = ({ modelWithQid, showModel, querys, modelID, setData }) => 
         return (event) => {
             setChecked(pre => [...pre.slice(0, index), event.target.checked, ...pre.slice(index + 1)]);
             const qid = modelWithQid.qids[index];
-            setData(data => setOneQuery(data, qid, event.target.checked, modelID));
+            setData(data => setOneQuery([...data], qid, event.target.checked, modelID));
         }
     }
 
