@@ -13,7 +13,7 @@ import randomcolor from 'randomcolor';
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
-export const options = {
+const options = {
     scales: {
         y: {
             beginAtZero: true,
@@ -21,7 +21,7 @@ export const options = {
     },
 };
 
-export const data = {
+const data = {
     datasets: [
         {
             label: 'Dataset 1',
@@ -37,11 +37,14 @@ export const data = {
                 x: faker.datatype.number({ min: -100, max: 100 }),
                 y: faker.datatype.number({ min: -100, max: 100 }),
             })),
-            backgroundColor:'rgba(215, 19, 165, 0.5)',
+            backgroundColor: 'rgba(215, 19, 165, 0.5)',
         },
     ],
 };
 
-export function ScatterChart() {
+const ScatterChart = () => {
     return <Scatter options={options} data={data} />;
 }
+
+
+export default ScatterChart;

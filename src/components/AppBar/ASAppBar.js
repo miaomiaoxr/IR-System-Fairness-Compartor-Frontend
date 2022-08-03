@@ -3,9 +3,8 @@ import { BackDropControl } from '../BackDrop/BackDropButton';
 import CSVForm from '../FileUpLoads/CSVForm';
 import JSONForm from '../FileUpLoads/JSONForm';
 import HightLightSelect from '../GroupSelect/HightLightSelect';
-import {VerticalBarChart} from '../BackDrop/Chart/VerticalBarChart';
 import DisplayControlModelAndQid from '../BackDrop/DisplayControl/DisplayControlModelAndQid';
-import {ScatterChart} from '../BackDrop/Chart/ScatterChart';
+import ChartList from '../BackDrop/Chart/ChartList';
 
 
 const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
@@ -20,8 +19,7 @@ const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
                     <CSVForm setData={setData}/>
                     <JSONForm />
                     <BackDropControl name='chart'>
-                        {/* <VerticalBarChart /> */}
-                        <ScatterChart />
+                        <ChartList />
                     </BackDropControl>
                     <BackDropControl name='Display'>
                         <DisplayControlModelAndQid data={data} setData={setData} modelsWithQid={modelsWithQid}/>
