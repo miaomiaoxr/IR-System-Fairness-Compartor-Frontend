@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import ScatterChart from './Charts/ScatterChart';
 import Form from './Form/Form';
 
@@ -21,6 +21,7 @@ const ChartAndForm = ({ model, qidColors }) => {
 
     return (
         <Stack>
+            <Typography variant="h6" noWrap>Model: {model.modelName}</Typography>
             {evals.length > 0 ? <ScatterChart dataSets={chartDataSet} /> : <div>{`No Evaluations in ${model.modelName}`}</div>}
             <Form noEval={formNoEval} />
         </Stack>
