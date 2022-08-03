@@ -9,7 +9,6 @@ import {
 } from 'chart.js';
 import { Scatter } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
-import randomcolor from 'randomcolor';
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 

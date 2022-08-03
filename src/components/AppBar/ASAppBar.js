@@ -19,7 +19,7 @@ const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
                     <CSVForm setData={setData}/>
                     <JSONForm />
                     <BackDropControl name='chart'>
-                        <MainChartAndForm />
+                        <MainChartAndForm data={data} />
                     </BackDropControl>
                     <BackDropControl name='Display'>
                         <DisplayControlModelAndQid data={data} setData={setData} modelsWithQid={modelsWithQid}/>

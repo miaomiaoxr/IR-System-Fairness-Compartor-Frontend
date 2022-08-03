@@ -1,6 +1,5 @@
-import React from 'react'
-
-const ChartsLabels = () => {
+const ChartsLabels = ({qidColors}) => {
+  console.log('ChartsLabels', qidColors)
   return (
     <div>ChartsLabels</div>
   )
