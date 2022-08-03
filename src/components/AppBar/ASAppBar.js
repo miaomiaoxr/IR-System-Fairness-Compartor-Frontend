@@ -5,6 +5,7 @@ import JSONForm from '../FileUpLoads/JSONForm';
 import HightLightSelect from '../GroupSelect/HightLightSelect';
 import {VerticalBarChart} from '../BackDrop/VerticalBarChart';
 import DisplayControlModelAndQid from '../BackDrop/DisplayControl/DisplayControlModelAndQid';
+import {ScatterChart} from '../BackDrop/ScatterChart';
 
 
 const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
@@ -19,7 +20,8 @@ const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
                     <CSVForm setData={setData}/>
                     <JSONForm />
                     <BackDropButton name='chart'>
-                        <VerticalBarChart />
+                        {/* <VerticalBarChart /> */}
+                        <ScatterChart />
                     </BackDropButton>
                     <BackDropButton name='Display'>
                         <DisplayControlModelAndQid data={data} setData={setData} modelsWithQid={modelsWithQid}/>

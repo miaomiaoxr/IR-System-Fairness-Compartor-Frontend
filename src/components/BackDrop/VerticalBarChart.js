@@ -9,7 +9,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { Stack, Typography, Paper } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 ChartJS.register(
     CategoryScale,
