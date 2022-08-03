@@ -21,9 +21,8 @@ const MainChartAndForm = ({ data }) => {
 
     return (
         <>
-            <div>MainChartAndForm</div>
             <ChartsLabels qidColors={qidColors} />
-            <ChartAndFormList />
+            <ChartAndFormList data={data} />
         </>
     )
 }

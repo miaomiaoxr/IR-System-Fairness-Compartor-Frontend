@@ -1,16 +1,12 @@
-import { Stack, Typography } from '@mui/material';
-import ScatterChart from '../Charts/ScatterChart';
+import { Stack } from '@mui/material';
+import ScatterChart from './Charts/ScatterChart';
+import Form from './Form/Form';
 
-const ChartAndForm = () => {
+const ChartAndForm = ({ model }) => {
     return (
         <Stack>
             <ScatterChart />
-            <Typography variant="h6">Statistics</Typography>
-            <Typography variant="h6">Statistics</Typography>
-            <Typography variant="h6">Statistics</Typography>
-            <Typography variant="h6">Statistics</Typography>
-            <Typography variant="h6">Statistics</Typography>
-            <Typography variant="h6">Statistics</Typography>
+            <Form />
         </Stack>
     )
 }
