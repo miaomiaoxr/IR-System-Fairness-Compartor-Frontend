@@ -1,10 +1,10 @@
 import { AppBar, Box, Toolbar, Typography} from '@mui/material';
-import { BackDropControl } from '../BackDrop/BackDropButton';
+import { BackDropControl } from '../BackDrop/BackDropControl';
 import CSVForm from '../FileUpLoads/CSVForm';
 import JSONForm from '../FileUpLoads/JSONForm';
 import HightLightSelect from '../GroupSelect/HightLightSelect';
 import DisplayControlModelAndQid from '../BackDrop/DisplayControl/DisplayControlModelAndQid';
-import ChartList from '../BackDrop/Chart/ChartList';
+import MainChartAndForm from '../BackDrop/Chart/MainChartAndForm';
 
 
 const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
@@ -19,7 +19,7 @@ const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
                     <CSVForm setData={setData}/>
                     <JSONForm />
                     <BackDropControl name='chart'>
-                        <ChartList />
+                        <MainChartAndForm />
                     </BackDropControl>
                     <BackDropControl name='Display'>
                         <DisplayControlModelAndQid data={data} setData={setData} modelsWithQid={modelsWithQid}/>
