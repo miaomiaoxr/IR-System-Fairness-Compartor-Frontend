@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Modal, Button, Card } from '@mui/material'
 
-export const BackDropButton = (props) => {
+export const BackDropControl = (props) => {
     const [open, setOpen] = useState(false);
     const handleToggle = () => { setOpen(!open) }
     const handleClose = () => { setOpen(false) }
