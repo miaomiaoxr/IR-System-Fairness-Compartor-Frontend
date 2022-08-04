@@ -2,6 +2,7 @@ import { Grid } from "@mui/material"
 import OneLabel from "./OneLabel"
 
 const ChartsLabels = ({ qidColors }) => {
+
   const items = [];
   for (let qid in qidColors) {
     items.push(

@@ -3,27 +3,32 @@ import ScatterChart from './Charts/ScatterChart';
 import Form from './Form/Form';
 
 const ChartAndForm = ({ model, qidColors }) => {
-    const evals = model.querys.filter(q => q.eval !== undefined)
-    const noEvals = model.querys.filter(q => q.eval === undefined)
+    const evals = model.evals;
+    const noEvals = model.querys.filter(q => !evals.hasOwnProperty(q.qid));
+    const evalsList = [];
+    for (let qid in evals) {
+        evalsList.push({ ...evals[qid], qid });
+    }
 
-    const chartDataSet = evals.length > 0 ? evals.map(q => {
+    const chartDataSet = evalsList.length > 0 ? evalsList.map(q => {
         return {
-            data: {
-                x: q.eval.precision,
-                y: q.eval.recall,
-                label: q.qid,
-            },
-            backgroundColor: qidColors[q.qid],
+            label: q.qid,
+            data: [{
+                x: q.precision,
+                y: q.recall,
+            }],
+            backgroundColor: qidColors[Number(q.qid)] || '#000000',
         }
     }) : []
+
 
     const formNoEval = noEvals.length > 0 ? noEvals.map(q => q.qid) : []
 
     return (
         <Stack>
             <Typography variant="h6" noWrap>Model: {model.modelName}</Typography>
-            {evals.length > 0 ? <ScatterChart dataSets={chartDataSet} /> : <div>{`No Evaluations in ${model.modelName}`}</div>}
-            <Form noEval={formNoEval} />
+            {chartDataSet.length > 0 ? <ScatterChart datasets={chartDataSet} /> : <div>{`No Evaluations in ${model.modelName}`}</div>}
+            <Form noEval={formNoEval} evalsList={evalsList} />
         </Stack>
     )
 }

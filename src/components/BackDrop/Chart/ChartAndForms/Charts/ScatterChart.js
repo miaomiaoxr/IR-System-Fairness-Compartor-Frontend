@@ -13,6 +13,11 @@ import { Scatter } from 'react-chartjs-2';
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 const options = {
+    plugins: {
+        legend: {
+            display: false
+        }
+    },
     scales: {
         x: {
             beginAtZero: true,
@@ -64,7 +69,7 @@ const options = {
 //     ],
 // };
 
-const ScatterChart = ({datasets}) => {
+const ScatterChart = ({ datasets }) => {
     const data = {
         datasets: datasets,
     }

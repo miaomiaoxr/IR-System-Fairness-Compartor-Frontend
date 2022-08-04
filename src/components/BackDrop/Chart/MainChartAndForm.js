@@ -23,7 +23,7 @@ const MainChartAndForm = ({ data }) => {
                     }
                 }
                 )
-        }, [data])
+        }, [])
     })
 
     return (
