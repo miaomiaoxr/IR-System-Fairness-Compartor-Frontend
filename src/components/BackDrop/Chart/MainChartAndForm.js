@@ -10,19 +10,26 @@ const MainChartAndForm = ({ data }) => {
         data.forEach(m => {
             if (m.showModel)
                 m.querys.forEach(q => {
-                    if (q.showQuery && q.eval) {
-                        if (!qidColors[q.qid]) {
-                            setQidColors(pre => ({ ...pre, [q.qid]: randomcolor({ format: 'rgba', alpha: 0.5 }) }))
+                    const qid = q.qid;
+                    if (q.showQuery && m.evals && m.evals[qid]) {//this qid has eval data
+                        if (!qidColors[qid]) {//this qid has no color yet
+                            setQidColors(pre => {
+                                const d = { ...pre }
+                                d[qid] = randomcolor({format: 'rgba', alpha: 0.5})//give each qid a random color
+                                return d;
+                            }
+                            )
                         }
                     }
-                })
+                }
+                )
         }, [data])
     })
 
     return (
         <>
             <ChartsLabels qidColors={qidColors} />
-            <ChartAndFormList data={data} qidColors={qidColors}/>
+            <ChartAndFormList data={data} qidColors={qidColors} />
         </>
     )
 }
