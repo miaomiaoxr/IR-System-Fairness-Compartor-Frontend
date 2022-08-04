@@ -17,7 +17,7 @@ const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
                     </Typography>
                     <HightLightSelect exposure={exposure} setExposure={setExposure}/> 
                     <CSVForm setData={setData}/>
-                    <JSONForm />
+                    <JSONForm setData={setData}/>
                     <BackDropControl name='chart'>
                         <MainChartAndForm data={data} />
                     </BackDropControl>
