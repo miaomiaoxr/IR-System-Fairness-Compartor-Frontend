@@ -16,7 +16,7 @@ const FileForm = ({ afterUpload, mime, textContent, accept, postForm }) => {
             return;
         }
 
-        if (file.size > 10000000) {
+        if (file.size > 1000000000) {
             console.log('File size is too big');
             return;
         }
