@@ -20,7 +20,6 @@ const options = {
         tooltip: {
             callbacks: {
               label: (item) => {
-                console.log(item);
                 const label = 'qid:' + item.dataset.label
                 const Precision = 'precision: '+item.parsed.x.toFixed(3);
                 const Recall = 'recall: '+item.parsed.y.toFixed(3);
