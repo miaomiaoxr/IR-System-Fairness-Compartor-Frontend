@@ -6,7 +6,7 @@ const FileForm = ({ afterUpload, mime, textContent, accept, postForm }) => {
 
     const handleFileUpload = async (e) => {
         e.preventDefault();
-        // const name = modelNameRef.current.value.trim();
+        
         const file = fileInputRef.current.files[0];
         const fileType = file.type;
 
@@ -25,7 +25,6 @@ const FileForm = ({ afterUpload, mime, textContent, accept, postForm }) => {
             return;
         }
 
-        // postForm({name:name, file:file})s
         postForm(file).then(res => afterUpload && afterUpload(res.data, fileType));
 
 

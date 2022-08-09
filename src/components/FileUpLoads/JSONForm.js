@@ -1,12 +1,3 @@
-// const JSONForm = ({ setData }) => {
-//     const postForm = Network.postJSONForm;
-
-
-//     return (
-//         <FileForm accept=".json" mime="application/json" textContent="Upload JSON" postForm={postForm} afterUpload={afterUpload} />
-//     )
-// }
-
 const afterUpload = (data, setData) => {
     setData(m => {
         const models = [...m];
