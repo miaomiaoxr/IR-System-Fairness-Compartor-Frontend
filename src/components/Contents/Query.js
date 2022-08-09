@@ -12,7 +12,7 @@ const Query = (
 ) => {
     const ID_query = query.data.map(entry => { return { ...entry, id: entry.docid } });
 
-    const {propertyToColor,GeoToProperty,genderToProperty} = GeoAndGender;
+    const { propertyToColor, GeoToProperty, genderToProperty } = GeoAndGender;
 
 
     const columns = [
@@ -20,7 +20,7 @@ const Query = (
             field: "id",
             headerName: "ID",
             hide: true,
-            
+
         },
         {
             field: "docid",
@@ -49,7 +49,7 @@ const Query = (
             width: 70,
             cellClassName: (params) => {
                 if (exposure !== 'gender') return;
-                
+
                 return clsx('query', genderToProperty[params.value.toString()]);
             },
         },
@@ -64,41 +64,42 @@ const Query = (
             width: 120,
             cellClassName: (params) => {
                 if (exposure !== 'geo') return;
-                
+
                 return clsx('query', GeoToProperty[params.value.toString()]);
             },
         },
     ];
-
     return (
-        <Box sx={{
-            width: 650, height: 400, pb: 5,
-            '& .query.first_color': {
-                backgroundColor: propertyToColor['first_color'],
-            },
-            '& .query.second_color': {
-                backgroundColor: propertyToColor['second_color'],
-            },
-            '& .query.third_color': {
-                backgroundColor: propertyToColor['third_color'],
-            },
-            '& .query.fourth_color': {
-                backgroundColor: propertyToColor['fourth_color'],
-            },
-            '& .query.fifth_color': {
-                backgroundColor: propertyToColor['fifth_color'],
-            },
-            '& .query.sixth_color': {
-                backgroundColor: propertyToColor['sixth_color'],
-            },
-            '& .query.other_color': {
-                backgroundColor: propertyToColor['other_color'],
-            }
-        }}
+        <Box
+            sx={{
+                pb: 5, flexWrap: 'nowrap',
+                '& .query.first_color': {
+                    backgroundColor: propertyToColor['first_color'],
+                },
+                '& .query.second_color': {
+                    backgroundColor: propertyToColor['second_color'],
+                },
+                '& .query.third_color': {
+                    backgroundColor: propertyToColor['third_color'],
+                },
+                '& .query.fourth_color': {
+                    backgroundColor: propertyToColor['fourth_color'],
+                },
+                '& .query.fifth_color': {
+                    backgroundColor: propertyToColor['fifth_color'],
+                },
+                '& .query.sixth_color': {
+                    backgroundColor: propertyToColor['sixth_color'],
+                },
+                '& .query.other_color': {
+                    backgroundColor: propertyToColor['other_color'],
+                }
+            }}
 
         >
             <h3>qid: {query.qid}</h3>
-            <DataGrid
+            <DataGrid sx={{
+                 flexDirection: "column", width: "100%",height: 400,}}
                 rows={ID_query}
                 columns={columns}
                 pageSize={5}

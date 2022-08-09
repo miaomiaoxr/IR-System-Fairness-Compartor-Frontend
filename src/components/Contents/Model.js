@@ -11,14 +11,15 @@ const Model = ({ modelID, modelName, querys, setData, renameModel, ...props }) =
         ...theme.typography.body2,
         padding: theme.spacing(1),
         textAlign: 'center',
+        flexWrap: 'nowrap',
         color: theme.palette.text.secondary,
     }));
 
     return (
         <Item>
             <ModelName modelName={modelName} modelID={modelID} renameModel={renameModel} />
-            <DeleteButton modelID={modelID} setData={setData} />
             {querys.map(query => query.showQuery && <Query key={query.qid} query={query} {...props} />)}
+            <DeleteButton modelID={modelID} setData={setData} />
         </Item>
     );
 }

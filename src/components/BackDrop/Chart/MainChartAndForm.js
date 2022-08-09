@@ -15,7 +15,7 @@ const MainChartAndForm = ({ data }) => {
                         if (!qidColors[qid]) {//this qid has no color yet
                             setQidColors(pre => {
                                 const d = { ...pre }
-                                d[qid] = randomcolor({format: 'rgba', alpha: 0.5})//give each qid a random color
+                                d[qid] = randomcolor({format: 'rgba', alpha: 1})//give each qid a random color
                                 return d;
                             }
                             )
