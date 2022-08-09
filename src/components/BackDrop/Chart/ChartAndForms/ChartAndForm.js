@@ -3,13 +3,19 @@ import ScatterChart from './Charts/ScatterChart';
 import Form from './Form/Form';
 
 const ChartAndForm = ({ model, qidColors }) => {
+    if (!model.showModel) return (<></>);
+
     const evals = model.evals;
-    const noEvals = model.querys.filter(q => !evals.hasOwnProperty(q.qid));
+    
     const f1 = evals.f1;
+
+    const showQids = model.querys.filter(q => q.showQuery).map(q => q.qid);
+    const noEvals = showQids.filter(qid => !evals.hasOwnProperty(qid));
 
     const evalsList = [];
     for (let qid in evals) {
-        evalsList.push({ ...evals[qid], qid });
+        if (showQids.includes(qid))
+            evalsList.push({ ...evals[qid], qid });
     }
 
     const chartDataSet = evalsList.length > 0 ? evalsList.map(q => {
@@ -30,7 +36,7 @@ const ChartAndForm = ({ model, qidColors }) => {
         <Stack>
             <Typography variant="h6" noWrap>Model: {model.modelName}</Typography>
             {chartDataSet.length > 0 ? <ScatterChart datasets={chartDataSet} /> : <div>{`No Evaluations in ${model.modelName}`}</div>}
-            <Form noEval={formNoEval} f1={f1}/>
+            <Form noEval={formNoEval} f1={f1} />
         </Stack>
     )
 }
