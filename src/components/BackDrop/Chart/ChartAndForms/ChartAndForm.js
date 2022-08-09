@@ -5,6 +5,8 @@ import Form from './Form/Form';
 const ChartAndForm = ({ model, qidColors }) => {
     const evals = model.evals;
     const noEvals = model.querys.filter(q => !evals.hasOwnProperty(q.qid));
+    const f1 = evals.f1;
+
     const evalsList = [];
     for (let qid in evals) {
         evalsList.push({ ...evals[qid], qid });
@@ -28,7 +30,7 @@ const ChartAndForm = ({ model, qidColors }) => {
         <Stack>
             <Typography variant="h6" noWrap>Model: {model.modelName}</Typography>
             {chartDataSet.length > 0 ? <ScatterChart datasets={chartDataSet} /> : <div>{`No Evaluations in ${model.modelName}`}</div>}
-            <Form noEval={formNoEval} evalsList={evalsList} />
+            <Form noEval={formNoEval} f1={f1}/>
         </Stack>
     )
 }
