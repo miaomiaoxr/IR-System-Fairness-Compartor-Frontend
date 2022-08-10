@@ -1,7 +1,6 @@
 import { AppBar, Box, Toolbar, Typography} from '@mui/material';
 import { BackDropControl } from '../BackDrop/BackDropControl';
-import CSVForm from '../FileUpLoads/CSVForm';
-import JSONForm from '../FileUpLoads/JSONForm';
+import UnifyUpload from '../FileUpLoads/UnifyUpload';
 import HightLightSelect from '../GroupSelect/HightLightSelect';
 import DisplayControlModelAndQid from '../BackDrop/DisplayControl/DisplayControlModelAndQid';
 import MainChartAndForm from '../BackDrop/Chart/MainChartAndForm';
@@ -16,8 +15,9 @@ const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
                         AS Comparer
                     </Typography>
                     <HightLightSelect exposure={exposure} setExposure={setExposure}/> 
-                    <CSVForm setData={setData}/>
-                    <JSONForm setData={setData}/>
+                    {/* <CSVForm setData={setData}/>
+                    <JSONForm setData={setData}/> */}
+                    <UnifyUpload setData={setData}/>
                     <BackDropControl name='chart'>
                         <MainChartAndForm data={data} />
                     </BackDropControl>

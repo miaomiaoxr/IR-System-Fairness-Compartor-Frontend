@@ -1,18 +1,17 @@
 import { useRef } from 'react';
 import { Button } from "@mui/material";
 
-
-
 const FileForm = ({ afterUpload, mime, textContent, accept, postForm }) => {
     const fileInputRef = useRef();
 
     const handleFileUpload = async (e) => {
         e.preventDefault();
-        // const name = modelNameRef.current.value.trim();
+        
         const file = fileInputRef.current.files[0];
+        const fileType = file.type;
 
         if (fileInputRef.current.files.length === 0) {
-            console.log('Please fill all the fields');
+            console.log('No file selected');
             return;
         }
 
@@ -21,38 +20,17 @@ const FileForm = ({ afterUpload, mime, textContent, accept, postForm }) => {
             return;
         }
 
-        if (mime && file.type !== mime) {
+        if (mime && !mime.split(',').map(oneMime => oneMime.trim()).includes(file.type)) {
             console.log(`File type is not ${mime}`);
             return;
         }
 
-        // postForm({name:name, file:file})
-        postForm(file).then(res => afterUpload && afterUpload(res.data));
+        postForm(file).then(res => afterUpload && afterUpload(res.data, fileType));
 
 
-        // e.target.reset();
-        // modelNameRef.current.value = '';//DON"T manipulate the DOM
-        // fileInputRef.current.files = null;
     }
 
-    // return (
-    //     <form onSubmit={formSubmissionHandler} encType="multipart/form-data">
-    //         <div className='form-control'>
-    //             {/* <label>
-    //                 Model Name:
-    //                 <input type="text" ref={modelNameRef} />
-    //             </label> */}
-    //             {/* <br /> */}
-    //             <label>
-    //                 File:
-    //                 <input type="file" ref={fileInputRef} name="model_file" />
-    //             </label>
-    //         </div>
-    //         <div className='form-actions'>
-    //             <button type="submit">Submit</button>
-    //         </div>
-    //     </form>
-    // )
+
     return (
         <>
             <Button
