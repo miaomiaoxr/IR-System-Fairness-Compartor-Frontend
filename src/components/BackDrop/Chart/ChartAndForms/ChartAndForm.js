@@ -38,7 +38,7 @@ const ChartAndForm = ({ model, qidColors }) => {
             <Typography variant="h6" noWrap>Model: {model.modelName}</Typography>
             {chartDataSet.length > 0 ? <ScatterChart datasets={chartDataSet} /> : <div>{`No Evaluations in ${model.modelName}`}</div>}
             <Form noEval={formNoEval} f1={f1} />
-            <PyEvals pyEval={model.pyEval} />
+            <PyEvals pyEval={model.pyEval} showQids={showQids}/>
         </Stack>
     )
 }
