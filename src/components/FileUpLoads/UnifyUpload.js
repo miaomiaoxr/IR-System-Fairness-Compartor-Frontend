@@ -2,8 +2,7 @@ import NetWork from '../../services/Network'
 import JSONAfterUpload from './JSONForm';
 import CSVAfterUpload from './CSVForm';
 import FileForm from './FileForm';
-
-
+import { memo } from 'react';
 
 const UnifyUpload = ({ setData }) => {
     const { postCSVForm, postJSONForm } = NetWork;
@@ -24,5 +23,5 @@ const UnifyUpload = ({ setData }) => {
     )
 }
 
-export default UnifyUpload
+export default memo(UnifyUpload)
 

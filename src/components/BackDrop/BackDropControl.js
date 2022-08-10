@@ -23,7 +23,7 @@ export const BackDropControl = (props) => {
 
     return (
         <>
-            <Button color="inherit" onClick={handleToggle} startIcon={IconControl(props.name)}>{props.name}</Button>
+            <Button sx={{ml:1}}variant="contained" onClick={handleToggle} startIcon={IconControl(props.name)}>{props.name}</Button>
             <Modal
                 sx={modalStyle}
                 open={open}
