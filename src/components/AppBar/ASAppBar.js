@@ -4,6 +4,7 @@ import UnifyUpload from '../FileUpLoads/UnifyUpload';
 import HightLightSelect from '../GroupSelect/HightLightSelect';
 import DisplayControlModelAndQid from '../BackDrop/DisplayControl/DisplayControlModelAndQid';
 import MainChartAndForm from '../BackDrop/Chart/MainChartAndForm';
+import ScatterPlotIcon from '@mui/icons-material/ScatterPlot';
 
 
 const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
@@ -15,10 +16,8 @@ const ASAppBar = ({data, setData, exposure, setExposure,modelsWithQid}) => {
                         AS Comparer
                     </Typography>
                     <HightLightSelect exposure={exposure} setExposure={setExposure}/> 
-                    {/* <CSVForm setData={setData}/>
-                    <JSONForm setData={setData}/> */}
                     <UnifyUpload setData={setData}/>
-                    <BackDropControl name='chart'>
+                    <BackDropControl name='stats'>
                         <MainChartAndForm data={data} />
                     </BackDropControl>
                     <BackDropControl name='Display'>

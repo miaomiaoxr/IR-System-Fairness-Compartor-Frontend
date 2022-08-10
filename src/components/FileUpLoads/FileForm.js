@@ -1,12 +1,13 @@
 import { useRef } from 'react';
 import { Button } from "@mui/material";
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 const FileForm = ({ afterUpload, mime, textContent, accept, postForm }) => {
     const fileInputRef = useRef();
 
     const handleFileUpload = async (e) => {
         e.preventDefault();
-        
+
         const file = fileInputRef.current.files[0];
         const fileType = file.type;
 
@@ -34,10 +35,11 @@ const FileForm = ({ afterUpload, mime, textContent, accept, postForm }) => {
     return (
         <>
             <Button
+                sx={{ ml: 1 }}
                 color="inherit"
                 component="label"
-            // variant="outlined"
-            // startIcon={<UploadFileIcon />}
+                // variant="outlined"
+                startIcon={<UploadFileIcon />}
             >
                 {textContent}
                 <input type="file" accept={accept} ref={fileInputRef} hidden onChange={handleFileUpload} />

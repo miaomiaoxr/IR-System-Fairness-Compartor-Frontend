@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Modal, Button, Card } from '@mui/material'
+import IconControl from './IconControl';
 
 export const BackDropControl = (props) => {
     const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ export const BackDropControl = (props) => {
 
     return (
         <>
-            <Button color="inherit" onClick={handleToggle}>{props.name}</Button>
+            <Button color="inherit" onClick={handleToggle} startIcon={IconControl(props.name)}>{props.name}</Button>
             <Modal
                 sx={modalStyle}
                 open={open}
