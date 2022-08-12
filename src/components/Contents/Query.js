@@ -8,11 +8,13 @@ const Query = (
     {
         query,
         exposure,
+
     }
 ) => {
+
     const ID_query = query.data.map(entry => { return { ...entry, id: entry.docid } });
 
-    const {propertyToColor,GeoToProperty,genderToProperty} = GeoAndGender;
+    const { propertyToColor, GeoToProperty, genderToProperty } = GeoAndGender;
 
 
     const columns = [
@@ -20,7 +22,7 @@ const Query = (
             field: "id",
             headerName: "ID",
             hide: true,
-            
+
         },
         {
             field: "docid",
@@ -49,7 +51,7 @@ const Query = (
             width: 70,
             cellClassName: (params) => {
                 if (exposure !== 'gender') return;
-                
+
                 return clsx('query', genderToProperty[params.value.toString()]);
             },
         },
@@ -64,7 +66,7 @@ const Query = (
             width: 120,
             cellClassName: (params) => {
                 if (exposure !== 'geo') return;
-                
+
                 return clsx('query', GeoToProperty[params.value.toString()]);
             },
         },

@@ -14,6 +14,7 @@ const ModelList = ({ data, ...props }) => {
                         key={model.id}
                         modelID={model.id}
                         modelName={model.modelName}
+                        modelVer = {model.ver}
                         querys={model.querys}
                         {...props}
                     />)}
