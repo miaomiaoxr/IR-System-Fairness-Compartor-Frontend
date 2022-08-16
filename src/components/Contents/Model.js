@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import DeleteButton from "../Delete/DeleteButton";
 import ModelName from "./ModelName";
+import QueryWithSeq from "./QueryWithSeq";
 
 const Model = ({ modelID, modelName, querys, setData, renameModel, modelVer, ...props }) => {
 
@@ -14,31 +15,13 @@ const Model = ({ modelID, modelName, querys, setData, renameModel, modelVer, ...
         color: theme.palette.text.secondary,
     }));
 
-    let newQuerys = [];
-    if (modelVer === 'task2') {
-        newQuerys = querys.map(q => {
-            q = {...q}
-            console.log('q.data', q.data)
-            const newData = q.data.reduce((pre, cur) => {
-                if (!pre[cur.seq_id])
-                    pre[cur.seq_id] = [];
-                pre[cur.seq_id].push(cur);
-                return pre;
-            }, {})
 
-            q.newData = [];
-            for (let k in newData)
-                q.newData.push(newData[k]);
-            return q;
-        })
-    }
-    console.log('querys.newData', newQuerys.newData)
 
     return (
         <Item>
             <ModelName modelName={modelName} modelID={modelID} renameModel={renameModel} />
             <DeleteButton modelID={modelID} setData={setData} />
-            {modelVer === 'task2' && newQuerys.map(query => query.showQuery && query.newData.map(seq => <Query key={query.qid + seq.seq_id} query={{ ...query, data: seq, qid: query.qid + seq.seq_id }} {...props} />))}
+            {modelVer === 'task2' && querys.map(query => query.showQuery && <QueryWithSeq key={query.qid} query={query} modelVer={modelVer} {...props} />)}
             {modelVer === 'task1' && querys.map(query => query.showQuery && <Query key={query.qid} query={query} modelVer={modelVer} {...props} />)}
         </Item>
     );

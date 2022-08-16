@@ -12,7 +12,10 @@ import { Scatter } from 'react-chartjs-2';
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
-const options = {
+const rustColor = '#9A3A06';
+const leafColor = '#006630';
+
+const options1 = {
     plugins: {
         legend: {
             display: false
@@ -34,7 +37,7 @@ const options = {
             title: {
                 display: true,
                 text: 'Precision',
-                color: '#911',
+                color: rustColor,
                 font: {
                     family: 'Comic Sans MS',
                     size: 16,
@@ -47,7 +50,53 @@ const options = {
             title: {
                 display: true,
                 text: 'Recall',
-                color: '#911',
+                color: rustColor,
+                font: {
+                    family: 'Comic Sans MS',
+                    size: 16,
+                    weight: 'bold',
+                },
+            },
+        },
+    },
+};
+
+const options2 = {
+    plugins: {
+        legend: {
+            display: false
+        },
+        tooltip: {
+            callbacks: {
+              label: (item) => {
+                const label = 'qid:' + item.dataset.label
+                const EED = 'EE-D: '+item.parsed.x.toFixed(3);
+                const EER = 'EE-R: '+item.parsed.y.toFixed(3);
+                return [label, EED, EER];
+              },
+            }
+          }
+    },
+    scales: {
+        x: {
+            beginAtZero: true,
+            title: {
+                display: true,
+                text: 'EE-D',
+                color: leafColor,
+                font: {
+                    family: 'Comic Sans MS',
+                    size: 16,
+                    weight: 'bold',
+                },
+            },
+        },
+        y: {
+            beginAtZero: true,
+            title: {
+                display: true,
+                text: 'EE-R',
+                color: leafColor,
                 font: {
                     family: 'Comic Sans MS',
                     size: 16,
@@ -79,10 +128,12 @@ const options = {
 //     ],
 // };
 
-const ScatterChart = ({ datasets }) => {
+const ScatterChart = ({ datasets,ver }) => {
     const data = {
         datasets: datasets,
     }
+
+    const options = ver === 2 ? options2 : options1;
 
     return <Scatter options={options} data={data} />;
 }
