@@ -8,12 +8,14 @@ const ChartAndForm = ({ model, qidColors }) => {
 
     const evals = model.evals;
     let ver = 1;
-    if(model.ver === 'task2') ver = 2;
+    if (model.ver === 'task2') ver = 2;
 
     const f1 = evals.f1;
 
     const showQids = model.querys.filter(q => q.showQuery).map(q => q.qid);
     const noEvals = showQids.filter(qid => !evals.hasOwnProperty(qid));
+    console.log('noEvals', noEvals);
+    console.log('showQids', showQids);
 
     const evalsList = [];
     for (let qid in evals) {
@@ -25,8 +27,8 @@ const ChartAndForm = ({ model, qidColors }) => {
         return {
             label: q.qid,
             data: [{
-                x: q.precision || q['EE-D'],
-                y: q.recall || q['EE-R'],
+                x: q.precision !== undefined ? q.precision : q['EE-D'],
+                y: q.recall !== undefined ? q.recall : q['EE-R'],
             }],
             backgroundColor: qidColors[Number(q.qid)] || '#000000',
         }
@@ -38,7 +40,7 @@ const ChartAndForm = ({ model, qidColors }) => {
     return (
         <Stack>
             <Typography variant="h6" noWrap>Model: {model.modelName}</Typography>
-            {chartDataSet.length > 0 ? <ScatterChart datasets={chartDataSet} ver={ver}/> : <div>{`No Evaluations in ${model.modelName}`}</div>}
+            {chartDataSet.length > 0 ? <ScatterChart datasets={chartDataSet} ver={ver} /> : <div>{`No Evaluations in ${model.modelName}`}</div>}
             <Form noEval={formNoEval} f1={f1} ver={ver} />
             <PyEvals pyEval={model.pyEval} showQids={showQids} />
         </Stack>

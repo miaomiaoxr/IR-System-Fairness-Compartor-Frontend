@@ -20,7 +20,7 @@ const QueryWithSeq = (
                 const oneSeq = ID_query.filter(entry => entry.seq_id === seq_id);
                 // if(oneSeq.length === 0) return;
                 return (
-                    <Box sx={{
+                    <Box key={seq_id} sx={{
                         width: 650,
                         ...BoxSettings,
                         ...colorSettings
