@@ -22,18 +22,19 @@ const options1 = {
         },
         tooltip: {
             callbacks: {
-              label: (item) => {
-                const label = 'qid:' + item.dataset.label
-                const Precision = 'precision: '+item.parsed.x.toFixed(3);
-                const Recall = 'recall: '+item.parsed.y.toFixed(3);
-                return [label, Precision, Recall];
-              },
+                label: (item) => {
+                    const label = 'qid:' + item.dataset.label
+                    const Precision = 'precision: ' + item.parsed.x.toFixed(3);
+                    const Recall = 'recall: ' + item.parsed.y.toFixed(3);
+                    return [label, Precision, Recall];
+                },
             }
-          }
+        }
     },
     scales: {
         x: {
             beginAtZero: true,
+            max: 1,
             title: {
                 display: true,
                 text: 'Precision',
@@ -47,6 +48,7 @@ const options1 = {
         },
         y: {
             beginAtZero: true,
+            max: 1,
             title: {
                 display: true,
                 text: 'Recall',
@@ -68,14 +70,14 @@ const options2 = {
         },
         tooltip: {
             callbacks: {
-              label: (item) => {
-                const label = 'qid:' + item.dataset.label
-                const EED = 'EE-D: '+item.parsed.x.toFixed(3);
-                const EER = 'EE-R: '+item.parsed.y.toFixed(3);
-                return [label, EED, EER];
-              },
+                label: (item) => {
+                    const label = 'qid:' + item.dataset.label
+                    const EED = 'EE-D: ' + item.parsed.x.toFixed(3);
+                    const EER = 'EE-R: ' + item.parsed.y.toFixed(3);
+                    return [label, EED, EER];
+                },
             }
-          }
+        }
     },
     scales: {
         x: {
@@ -128,7 +130,7 @@ const options2 = {
 //     ],
 // };
 
-const ScatterChart = ({ datasets,ver }) => {
+const ScatterChart = ({ datasets, ver }) => {
     const data = {
         datasets: datasets,
     }
