@@ -52,6 +52,10 @@ const FileForm = ({ afterUpload, mime, textContent, accept, postForm }) => {
     }
 
     const buttonSx = {
+        bgcolor:'#02689c',
+        '&:hover': {
+            backgroundColor: '#005078',
+        },
         ...(success && {
             bgcolor: green[500],
             '&:hover': {

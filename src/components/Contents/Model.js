@@ -12,6 +12,7 @@ const Model = ({ modelID, modelName, querys, setData, renameModel, modelVer, ...
         ...theme.typography.body2,
         padding: theme.spacing(1),
         textAlign: 'center',
+        flexWrap: 'nowrap',
         color: theme.palette.text.secondary,
     }));
 
@@ -20,9 +21,11 @@ const Model = ({ modelID, modelName, querys, setData, renameModel, modelVer, ...
     return (
         <Item>
             <ModelName modelName={modelName} modelID={modelID} renameModel={renameModel} />
+
             <DeleteButton modelID={modelID} setData={setData} />
             {modelVer === 'task2' && querys.map(query => query.showQuery && <QueryWithSeq key={query.qid} query={query} modelVer={modelVer} {...props} />)}
             {modelVer === 'task1' && querys.map(query => query.showQuery && <Query key={query.qid} query={query} modelVer={modelVer} {...props} />)}
+
         </Item>
     );
 }

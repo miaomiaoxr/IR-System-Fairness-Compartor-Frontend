@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 const { GeoToProperty, genderToProperty } = GeoAndGender;
 
-const DG = ({exposure,ID_query}) => {
+const DG = ({ exposure, ID_query }) => {
     const columns = (exposure) => {
         return ([
             {
@@ -64,6 +64,11 @@ const DG = ({exposure,ID_query}) => {
 
     return (
         <DataGrid
+            sx={{
+                boxShadow: 1,
+                border: 1,
+                borderColor: 'primary.light',
+            }}
             rows={ID_query}
             columns={columns(exposure)}
             pageSize={5}

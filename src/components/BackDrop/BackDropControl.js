@@ -21,9 +21,16 @@ export const BackDropControl = (props) => {
         overflowY: "scroll",
     };
 
+    const buttonSx = {
+        bgcolor: '#02689c',
+        '&:hover': {
+            backgroundColor: '#005078',
+        },
+    };
+
     return (
         <>
-            <Button sx={{ml:1}}variant="contained" onClick={handleToggle} startIcon={IconControl(props.name)}>{props.name}</Button>
+            <Button sx={{ ml:1, ...buttonSx }} variant="contained" onClick={handleToggle} startIcon={IconControl(props.name)}>{props.name}</Button>
             <Modal
                 sx={modalStyle}
                 open={open}

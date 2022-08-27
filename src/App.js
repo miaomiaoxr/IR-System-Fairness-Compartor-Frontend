@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <ASAppBar data={data} setData={setData} exposure={exposure} setExposure={setExposure} modelsWithQid={modelsWithQid} />
-      <ModelList data={data} exposure={exposure} setData={setData} renameModel={renameModel} />
+      <ModelList data={data} exposure={exposure} setExposure={setExposure} setData={setData} renameModel={renameModel} />
     </div>
   );
 }

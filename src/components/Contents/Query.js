@@ -9,15 +9,15 @@ const Query = (
         exposure,
     }
 ) => {
-
     const ID_query = query.data.map(entry => { return { ...entry, id: entry.docid } });
 
     return (
-        <Box sx={{
-            width: 650,
-            ...BoxSettings,
-            ...colorSettings
-        }}
+        <Box
+            sx={{
+                width: 650,
+                ...colorSettings,
+                ...BoxSettings
+            }}
         >
             <h3>qid: {query.qid}</h3>
             <DG

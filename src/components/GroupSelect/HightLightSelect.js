@@ -9,6 +9,7 @@ const HightLightSelect = ({ exposure, setExposure }) => {
 
     return (
         <ToggleButtonGroup
+            sx={{ml:1}}
             value={exposure}
             exclusive
             onChange={handleChange}
